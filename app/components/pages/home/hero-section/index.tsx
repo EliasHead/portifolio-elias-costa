@@ -1,25 +1,30 @@
-import { Button } from "@/app/components/button"
-import { TechBadge } from "@/app/components/tech-badge"
-import Image from "next/image"
+import { Button } from '@/app/components/button'
+import { TechBadge } from '@/app/components/tech-badge'
+import Image from 'next/image'
 import { HiArrowNarrowRight } from 'react-icons/hi'
-import { TbBrandGithub, TbBrandLinkedin, TbBrandYoutube, TbBrandWhatsapp } from 'react-icons/tb'
+import {
+  TbBrandGithub,
+  TbBrandLinkedin,
+  TbBrandYoutube,
+  TbBrandWhatsapp,
+} from 'react-icons/tb'
 
 const MOCK_CONTACTS = [
   {
     url: 'https://github.com',
-    icon: <TbBrandGithub />
+    icon: <TbBrandGithub />,
   },
   {
     url: 'https://linkedin.com',
-    icon: <TbBrandLinkedin />
+    icon: <TbBrandLinkedin />,
   },
   {
     url: 'https://youtube.com',
-    icon: <TbBrandYoutube />
+    icon: <TbBrandYoutube />,
   },
   {
     url: 'https://whatsap.me',
-    icon: <TbBrandWhatsapp />
+    icon: <TbBrandWhatsapp />,
   },
 ]
 
@@ -31,17 +36,20 @@ export const HeroSection = () => {
           <p className="font-mono text-emerald-400">Olá, meu nome é</p>
           <h2 className="text-4xl font-medium mt-2">Elias Costa</h2>
 
-          <p className="text-gray-400 my-6 text-sm sm:text-base">Olá, meu nome é Elias Costa e sou um desenvolvedor front-end apaixonado por técnologia</p>
-          
+          <p className="text-gray-400 my-6 text-sm sm:text-base">
+            Olá, meu nome é Elias Costa e sou um desenvolvedor front-end
+            apaixonado por técnologia
+          </p>
+
           <div className="flex flex-wrap gap-x-2 gap-y-3 lg:max-w-[340px]">
-            {Array.from({length: 7}).map((_, index) => (
-              <TechBadge name="Next.js" />
+            {Array.from({ length: 7 }).map((_, index) => (
+              <TechBadge key={index} name="Next.js" />
             ))}
           </div>
           <div className="mt-6 lg:mt-10 flex sm:items-center sm:gap-5 flex-col sm:flex-row">
             <Button className="w-max shadow-button">
               Entre em contato
-              <HiArrowNarrowRight size={18} />  
+              <HiArrowNarrowRight size={18} />
             </Button>
 
             <div className="text-2xl text-gray-600 flex items-center h-20 gap-3">
@@ -51,6 +59,7 @@ export const HeroSection = () => {
                   key={`contact-${index}`}
                   target="_blank"
                   className="hover:text-gray-100 transition-colors"
+                  rel="noreferrer"
                 >
                   {contact.icon}
                 </a>
@@ -58,14 +67,14 @@ export const HeroSection = () => {
             </div>
           </div>
         </div>
-        
+
         <Image
           width={420}
           height={404}
-          src='/images/profile-pic.png'
+          src="/images/profile-pic.png"
           alt="Foto de perfil Elias Costa"
           className="w-[300px] h-[300px] lg:w-[420px] mb-6 lg:mb-0 shadow-2xl rounded-lg object-cover"
-        /> 
+        />
       </div>
     </section>
   )
