@@ -1,7 +1,10 @@
 'use client'
 
 import { Button } from '@/app/components/button'
+import { CMSIcon } from '@/app/components/cms-icon'
+import { RichText } from '@/app/components/rich-text'
 import { TechBadge } from '@/app/components/tech-badge'
+import { HomePageInfo } from '@/app/types/page-info'
 import Image from 'next/image'
 import { HiArrowNarrowRight } from 'react-icons/hi'
 import {
@@ -30,7 +33,11 @@ const MOCK_CONTACTS = [
   },
 ]
 
-export const HeroSection = () => {
+type HomeSectionProps = {
+  homeInfo: HomePageInfo
+}
+
+export const HeroSection = ({ homeInfo }: HomeSectionProps) => {
   const handleContact = () => {
     const contactSection = document.querySelector('#contact')
     if (contactSection) {
@@ -45,14 +52,13 @@ export const HeroSection = () => {
           <p className="font-mono text-emerald-400">Olá, meu nome é</p>
           <h2 className="text-4xl font-medium mt-2">Elias Costa</h2>
 
-          <p className="text-gray-400 my-6 text-sm sm:text-base">
-            Olá, meu nome é Elias Costa e sou um desenvolvedor front-end
-            apaixonado por técnologia
-          </p>
+          <div className="text-gray-400 my-6 text-sm sm:text-base">
+            <RichText content={homeInfo.introduction.raw} />
+          </div>
 
           <div className="flex flex-wrap gap-x-2 gap-y-3 lg:max-w-[340px]">
-            {Array.from({ length: 7 }).map((_, index) => (
-              <TechBadge key={index} name="Next.js" />
+            {homeInfo.technologies.map((tech) => (
+              <TechBadge key={tech.name} name={tech.name} />
             ))}
           </div>
           <div className="mt-6 lg:mt-10 flex sm:items-center sm:gap-5 flex-col sm:flex-row">
@@ -62,7 +68,7 @@ export const HeroSection = () => {
             </Button>
 
             <div className="text-2xl text-gray-600 flex items-center h-20 gap-3">
-              {MOCK_CONTACTS.map((contact, index) => (
+              {homeInfo.socials.map((contact, index) => (
                 <a
                   href={contact.url}
                   key={`contact-${index}`}
@@ -70,7 +76,7 @@ export const HeroSection = () => {
                   className="hover:text-gray-100 transition-colors"
                   rel="noreferrer"
                 >
-                  {contact.icon}
+                  <CMSIcon icon={contact.iconSvg} />
                 </a>
               ))}
             </div>
@@ -80,7 +86,7 @@ export const HeroSection = () => {
         <Image
           width={420}
           height={404}
-          src="/images/profile-pic.png"
+          src={homeInfo.profilePicture.url}
           alt="Foto de perfil Elias Costa"
           className="w-[300px] h-[300px] lg:w-[420px] mb-6 lg:mb-0 shadow-2xl rounded-lg object-cover"
         />
