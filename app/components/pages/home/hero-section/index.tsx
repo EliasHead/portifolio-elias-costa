@@ -7,31 +7,6 @@ import { TechBadge } from '@/app/components/tech-badge'
 import { HomePageInfo } from '@/app/types/page-info'
 import Image from 'next/image'
 import { HiArrowNarrowRight } from 'react-icons/hi'
-import {
-  TbBrandGithub,
-  TbBrandLinkedin,
-  TbBrandYoutube,
-  TbBrandWhatsapp,
-} from 'react-icons/tb'
-
-const MOCK_CONTACTS = [
-  {
-    url: 'https://github.com',
-    icon: <TbBrandGithub />,
-  },
-  {
-    url: 'https://linkedin.com',
-    icon: <TbBrandLinkedin />,
-  },
-  {
-    url: 'https://youtube.com',
-    icon: <TbBrandYoutube />,
-  },
-  {
-    url: 'https://whatsap.me',
-    icon: <TbBrandWhatsapp />,
-  },
-]
 
 type HomeSectionProps = {
   homeInfo: HomePageInfo
