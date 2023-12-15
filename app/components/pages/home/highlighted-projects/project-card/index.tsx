@@ -9,7 +9,6 @@ type PorjectCardProps = {
 }
 
 export const ProjectCard = ({ project }: PorjectCardProps) => {
-  // console.log(project)
   return (
     <div className="flex gap-6 lg:gap-12 flex-col lg:flex-row">
       <div className="w-full h-[200px] sm:h-[300px] lg:w-[420px] lg:min-h-full">
