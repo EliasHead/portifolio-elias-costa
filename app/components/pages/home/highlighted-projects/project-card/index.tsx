@@ -6,6 +6,7 @@ import { Project } from '@/app/types/projects'
 import Image from 'next/image'
 import { HiArrowNarrowRight } from 'react-icons/hi'
 import { motion } from 'framer-motion'
+import { techBadgeAnimation } from '@/app/lib/animations'
 
 type PorjectCardProps = {
   project: Project
@@ -69,10 +70,8 @@ export const ProjectCard = ({ project }: PorjectCardProps) => {
             <TechBadge
               key={`${project.title}-${tech.name}`}
               name={tech.name}
-              initial={{ opacity: 0, scale: 0 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0 }}
-              transition={{ duration: 0.2, delay: 0.5 + i * 0.1 }}
+              {...techBadgeAnimation}
+              transition={{ duration: 0.2, delay: i * 0.1 }}
             />
           ))}
         </div>
